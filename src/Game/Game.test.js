@@ -2,6 +2,15 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Game, { players, findWinner, initialGrid } from './Game';
 
+function win(component) {
+  component.find('Cell').at(0).simulate('click');
+  component.find('Cell').at(1).simulate('click');
+  component.find('Cell').at(3).simulate('click');
+  component.find('Cell').at(4).simulate('click');
+  component.find('Cell').at(6).simulate('click');
+  component.find('Cell').at(7).simulate('click');
+}
+
 describe('Game', () => {
 
   it('renders without crashing', () => {
@@ -39,13 +48,28 @@ describe('Game', () => {
 
   it('doesn\'t continue to populate once there\'s a winner', () => {
     const component = mount(<Game />);
+    win(component);
+    expect(component.find('Cell').at(7).prop('value')).toBeNull();
+  });
+
+  it('displays a message to say who won', () => {
+    const component = mount(<Game />);
+    win(component);
+    expect(component.find('.status').text()).toBe('○ wins!');
+  });
+
+  it('displays a message in the case of a tie', () => {
+    const component = mount(<Game />);
     component.find('Cell').at(0).simulate('click');
     component.find('Cell').at(1).simulate('click');
+    component.find('Cell').at(2).simulate('click');
     component.find('Cell').at(3).simulate('click');
+    component.find('Cell').at(5).simulate('click');
     component.find('Cell').at(4).simulate('click');
-    component.find('Cell').at(6).simulate('click');
     component.find('Cell').at(7).simulate('click');
-    expect(component.find('Cell').at(7).prop('value')).toBeNull();
+    component.find('Cell').at(8).simulate('click');
+    component.find('Cell').at(6).simulate('click');
+    expect(component.find('.status').text()).toBe('It\'s a tie!');
   });
 
   it('resets the grid when Reset is clicked', () => {
