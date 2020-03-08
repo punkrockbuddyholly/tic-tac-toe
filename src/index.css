@@ -14,3 +14,10 @@ svg {
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
+
+.btn.btn--reset {
+  padding: 0.6rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
