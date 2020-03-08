@@ -74,8 +74,12 @@ function Game() {
     return (
         <div className="game">
             <Board grid={grid} onClick={handleBoardClick} />
-            { winner !== undefined && `${playerIcons[winner]} wins!`}
-            <button className='btn btn--reset' onClick={reset}>Reset</button>
+            <div className="status-bar">
+              <div className="status">
+                { winner !== undefined ? `${playerIcons[winner]} wins!` : '' }
+              </div>
+              <button className="btn btn--reset" onClick={reset}>Reset</button>
+            </div>
         </div>
     );
 }
