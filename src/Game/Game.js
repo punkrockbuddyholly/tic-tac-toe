@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Board from '../Components/Board';
+import Board from '../Board';
 import { findWinner } from './findWinner';
 
 export const initialGrid = '_'.repeat(9).split('').map( () => null);
