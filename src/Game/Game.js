@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Board from '../Components/Board';
+import { findWinner } from './findWinner';
 
 export const initialGrid = '_'.repeat(9).split('').map( () => null);
 export const players = [0, 1];
@@ -9,35 +10,6 @@ export const intitialState = {
   gameOver: false,
   winner: undefined,
 };
-
-export const findWinner = (grid) => {
-  const winningCombos = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-  let winner = undefined;
-  for(let combo of winningCombos) {
-    let player = grid[combo[0]];
-    for(let cell of combo) {
-      if(player === grid[cell] && grid[cell] !== null) {
-        winner = player;
-      } else {
-        winner = undefined;
-        break;
-      }
-    };
-    if(winner !== undefined) {
-      break;
-    }
-  };
-  return winner;
-}
 
 const textFriendlyPlayerIcons = ['○', '×'];
 

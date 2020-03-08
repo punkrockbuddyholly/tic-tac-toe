@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Game, { players, findWinner, initialGrid } from './Game';
+import Game, { players } from './Game';
 
 function win(component) {
   component.find('Cell').at(0).simulate('click');
@@ -89,34 +89,4 @@ describe('Game', () => {
     });
   });
 
-});
-
-describe('findWinner', () => {
-
-  it('returns undefined if no winner', () => {
-    expect(findWinner(initialGrid)).toBe(undefined);
-    expect(findWinner([
-      0, null, null,
-      1, 1, null,
-      0, null, null
-    ])).toBe(undefined);
-  });
-
-  it('returns a player if a player wins', () => {
-    expect(findWinner([
-      0, 0, 0,
-      1, 0, 1,
-      1, 0, 1
-    ])).toBe(0);
-    expect(findWinner([
-      0, 1, 0,
-      1, 0, 1,
-      1, 0, 0
-    ])).toBe(0);
-    expect(findWinner([
-      1, 1, 0,
-      1, 0, 1,
-      1, 0, 0
-    ])).toBe(1);
-  });
 });
