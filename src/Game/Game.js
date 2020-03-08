@@ -8,7 +8,6 @@ export const players = [0, 1];
 export const intitialState = {
   grid: [...initialGrid],
   currentPlayer: players[0],
-  gameOver: false,
   winner: undefined,
 };
 
