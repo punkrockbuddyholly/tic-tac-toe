@@ -3,13 +3,13 @@ import Board from '../Components/Board';
 
 export const initialGrid = '_'.repeat(9).split('').map( () => null);
 export const players = [0, 1];
+export const playerIcons = ['○', '×'];
 export const intitialState = {
   grid: [...initialGrid],
   currentPlayer: players[0],
   gameOver: false,
   winner: undefined,
 };
-export const playerIcons = ['○', '×']
 
 export const findWinner = (grid) => {
   const winningCombos = [
@@ -61,6 +61,10 @@ function Game() {
       }
     };
 
+    const isBoardFilled = () => {
+      return grid.every( cell => cell !== null);
+    }
+
     const reset = () => {
       setGrid(intitialState.grid);
       setCurrentPlayer(intitialState.currentPlayer);
@@ -71,12 +75,19 @@ function Game() {
     // every time the grid changes.
     useEffect(checkWinner, [grid]);
 
+    let winnerMessage = '';
+    if(isBoardFilled() && winner === undefined) {
+      winnerMessage = 'It\'s a tie!';
+    } else if(winner !== undefined) {
+      winnerMessage = `${playerIcons[winner]} wins!`;
+    }
+
     return (
         <div className="game">
             <Board grid={grid} onClick={handleBoardClick} />
             <div className="status-bar">
               <div className="status">
-                { winner !== undefined ? `${playerIcons[winner]} wins!` : '' }
+                { winnerMessage }
               </div>
               <button className="btn btn--reset" onClick={reset}>Reset</button>
             </div>
