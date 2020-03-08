@@ -85,6 +85,7 @@ function Game() {
 
     return (
         <div className="game">
+            <h1>Tic tac toe</h1>
             <Board grid={grid} onClick={handleBoardClick} />
             <div className="status-bar">
               <div className="status">

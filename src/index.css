@@ -1,11 +1,22 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Baloo Chettan 2', cursive;
 }
 
 svg {
   width: 70%;
+}
+
+h1 {
+  width: 90vw;
+  margin: 1rem auto;
+}
+
+@media screen and (min-width: 500px) {
+  h1 {
+    width: 450px;
+  }
 }
 
 .status-bar {
@@ -17,7 +28,7 @@ svg {
 
 @media screen and (min-width: 500px) {
   .status-bar {
-    width: 500px;
+    width: 450px;
     margin: 1rem auto;
   }
 }
