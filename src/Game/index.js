@@ -1,1 +1,1 @@
-export { default, playerIcons } from './Game';
+export { default } from './Game';
