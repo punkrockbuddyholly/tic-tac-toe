@@ -46,7 +46,7 @@ function Game() {
     const [winner, setWinner] = useState(intitialState.winner);
   
     const handleBoardClick = (cell) => {
-      if(grid[cell] === null) {
+      if(grid[cell] === null && winner === undefined) {
         // Map over the grid and update the clicked cell's value
         const newGrid = grid.map( (x, i) => (i === cell ? currentPlayer : x));
         setGrid(newGrid);

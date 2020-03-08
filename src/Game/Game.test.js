@@ -23,8 +23,10 @@ describe('Game', () => {
       node.simulate('click');
     });
     component.find('Cell').forEach( (node, i) => {
-      const expectedPlayer = players[i % 2];
-      expect(node.prop('value')).toBe(expectedPlayer);
+      if(i < 6) {
+        const expectedPlayer = players[i % 2];
+        expect(node.prop('value')).toBe(expectedPlayer);
+      }
     });
   });
 
@@ -35,14 +37,27 @@ describe('Game', () => {
     expect(component.find('Cell').at(0).prop('value')).toBe(players[0]);
   });
 
+  it('doesn\'t continue to populate once there\'s a winner', () => {
+    const component = mount(<Game />);
+    component.find('Cell').at(0).simulate('click');
+    component.find('Cell').at(1).simulate('click');
+    component.find('Cell').at(3).simulate('click');
+    component.find('Cell').at(4).simulate('click');
+    component.find('Cell').at(6).simulate('click');
+    component.find('Cell').at(7).simulate('click');
+    expect(component.find('Cell').at(7).prop('value')).toBeNull();
+  });
+
   it('resets the grid when Reset is clicked', () => {
     const component = mount(<Game />);
     component.find('Cell').forEach( (node) => {
       node.simulate('click');
     });
     component.find('Cell').forEach( (node, i) => {
-      const expectedPlayer = players[i % 2];
-      expect(node.prop('value')).toBe(expectedPlayer);
+      if(i < 6) {
+        const expectedPlayer = players[i % 2];
+        expect(node.prop('value')).toBe(expectedPlayer);
+      }
     });
     component.find('button').simulate('click');
     component.find('Cell').forEach( (node) => {
