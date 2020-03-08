@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+svg {
+  width: 70%;
+}
+
 .status-bar {
   width: 90vw;
   margin: 0 auto;

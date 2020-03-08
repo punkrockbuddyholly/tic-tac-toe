@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Cell from './Cell';
-import { playerIcons } from '../../Game';
+import { playerIcons } from '../../playerIcons';
 
 it('renders without crashing', () => {
   shallow(<Cell />);
@@ -9,5 +9,5 @@ it('renders without crashing', () => {
 
 it('renders with the value passed in', () => {
   const wrapper = shallow(<Cell value={0} />);
-  expect(wrapper.text()).toBe(playerIcons[0]);
+  expect(wrapper.find('.playerIcon').length).toBe(1);
 });

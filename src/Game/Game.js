@@ -3,7 +3,6 @@ import Board from '../Components/Board';
 
 export const initialGrid = '_'.repeat(9).split('').map( () => null);
 export const players = [0, 1];
-export const playerIcons = ['○', '×'];
 export const intitialState = {
   grid: [...initialGrid],
   currentPlayer: players[0],
@@ -39,6 +38,8 @@ export const findWinner = (grid) => {
   };
   return winner;
 }
+
+const textFriendlyPlayerIcons = ['○', '×'];
 
 function Game() {
     const [grid, setGrid] = useState(intitialState.grid);
@@ -79,7 +80,7 @@ function Game() {
     if(isBoardFilled() && winner === undefined) {
       winnerMessage = 'It\'s a tie!';
     } else if(winner !== undefined) {
-      winnerMessage = `${playerIcons[winner]} wins!`;
+      winnerMessage = `${textFriendlyPlayerIcons[winner]} wins!`;
     }
 
     return (

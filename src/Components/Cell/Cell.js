@@ -1,5 +1,5 @@
 import React from 'react';
-import { playerIcons } from '../../Game';
+import { playerIcons } from '../../playerIcons';
 import './cell.css';
 
 function Cell(props) {
