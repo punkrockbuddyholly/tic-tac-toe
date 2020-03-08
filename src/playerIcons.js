@@ -7,4 +7,6 @@ export const playerIcons = [
   <line x1="20" y1="20" x2="230" y2="230" stroke="black" stroke="black" strokeWidth="40" id="line" />
   <line x1="230" y1="20" x2="20" y2="230" stroke="black" stroke="black" strokeWidth="40" id="line" />
 </svg>
-]
+];
+
+export const textFriendlyPlayerIcons = ['○', '×'];

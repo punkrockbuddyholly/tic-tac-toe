@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Board from '../Board';
 import { findWinner } from './findWinner';
+import { textFriendlyPlayerIcons } from '../playerIcons';
 
 export const initialGrid = '_'.repeat(9).split('').map( () => null);
 export const players = [0, 1];
@@ -10,8 +11,6 @@ export const intitialState = {
   gameOver: false,
   winner: undefined,
 };
-
-const textFriendlyPlayerIcons = ['○', '×'];
 
 function Game() {
     const [grid, setGrid] = useState(intitialState.grid);
