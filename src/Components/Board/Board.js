@@ -1,6 +1,5 @@
 import React from 'react';
-import Cell from '../Cell'
-import './board.css';
+import Cell from '../Cell';
 
 function Board(props) {
     const grid = props.grid || [];

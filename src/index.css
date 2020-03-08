@@ -4,10 +4,6 @@ body {
   font-family: 'Baloo Chettan 2', cursive;
 }
 
-svg {
-  width: 70%;
-}
-
 h1 {
   width: 90vw;
   margin: 1rem auto;
@@ -18,6 +14,8 @@ h1 {
     width: 450px;
   }
 }
+
+/* Status bar */
 
 .status-bar {
   width: 90vw;
@@ -43,4 +41,44 @@ h1 {
   font-size: 1.2rem;
   cursor: pointer;
   outline: none;
+}
+
+/* Board */
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  width: 90vw;
+  height: 90vw;
+  margin: 1rem auto;
+  border: solid 5px #ddd;
+}
+
+@media screen and (min-width: 500px) {
+  .board {
+    width: 450px;
+    height: 450px;
+    margin: 1rem auto;
+  }
+}
+
+
+/* Cell */
+
+.cell {
+  border: solid 1px #eee;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8rem;
+  line-height: 0;
+}
+
+.cell svg {
+  width: 70%;
 }
